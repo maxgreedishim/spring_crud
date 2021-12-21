@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class UsersConverter {
 
-    public Users fromUserDtoToUser(UsersDto usersDto){
-        return Users.builder()
-                .id(usersDto.getId())
-                .email(usersDto.getEmail())
-                .login(usersDto.getLogin())
-                .name(usersDto.getName())
-                .build();
+    public Users fromUserDtoToUser(UsersDto usersDto) {
+        Users users = new Users();
+        users.setId(usersDto.getId());
+        users.setEmail(usersDto.getEmail());
+        users.setName(usersDto.getName());
+        users.setLogin(usersDto.getLogin());
+        return users;
     }
 
-    public UsersDto fromUserToUserDto(Users users){
+    public UsersDto fromUserToUserDto(Users users) {
         return UsersDto.builder()
                 .id(users.getId())
                 .email(users.getEmail())
@@ -24,5 +24,4 @@ public class UsersConverter {
                 .name(users.getName())
                 .build();
     }
-
 }
