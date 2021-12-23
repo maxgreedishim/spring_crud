@@ -1,8 +1,10 @@
-version: '3.7'
+version: '3'
 services:
-  posgres:
-    image: postgres:14.1
+  postgres:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
-        - ./initial_sql_script.sql:/doker-entrypoint-inttdb.d/initial_sql_script.sql
+      - ./initial_sql_script.sql:/docker-entrypoint-initdb.d/initial_sql_script.sql
     ports:
-        - 5432:5432
+      - 5432:5432
